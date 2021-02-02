@@ -7,5 +7,9 @@
 
 import Foundation
 
-print("Hello, World!")
+let linkList = LinkList<Int>()
+for i in 1...5 {
+    linkList.append(value: i)
+}
+print(linkList.lengh())
 
