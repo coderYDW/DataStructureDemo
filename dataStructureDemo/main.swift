@@ -7,12 +7,17 @@
 
 import Foundation
 
+let linklist = LinkList<Int>()
+linklist.append(atHead: 1)
+linklist.append(atHead: 2)
+linklist.removeAll()
+print("")
 
-let c = LRUCache(2)
-c.put(1, 1)
-c.put(2, 2)
-var a = c.get(1)
-c.put(3, 3)
-a = c.get(2)
+//let c = LRUCache(2)
+//c.put(1, 1)
+//c.put(2, 2)
+//var a = c.get(1)
+//c.put(3, 3)
+//a = c.get(2)
 
 
