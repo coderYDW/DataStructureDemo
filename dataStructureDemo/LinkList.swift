@@ -104,22 +104,12 @@ class LinkList<T: Equatable>: LinkedListFunction {
     
     func append(atHead newElement: T) {
         let node = ListNode<T>(value: newElement)
-        if let headNode = head {
-            node.next = headNode
-            headNode.prior = node
-        }
-        head = node
+        appendNode(atHead: node)
     }
     
     func append(atTail newElement: T) {
         let node = ListNode<T>(value: newElement)
-        if let tailNode = tail {
-            tailNode.next = node
-            node.prior = tailNode
-        } else {
-            head = node
-        }
-        tail = node
+        appendNode(atTail: node)
     }
     
     @discardableResult
@@ -165,8 +155,13 @@ class LinkList<T: Equatable>: LinkedListFunction {
     @discardableResult
     func removeFirst() -> T? {
         if let h = head {
-            head = h.next
-            return h.data
+            if let headNext = h.next {
+                head = headNext
+                return h.data
+            } else {
+                head = nil
+                tail = nil
+            }
         }
         return nil
     }
@@ -179,6 +174,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
                 tail?.next = nil
             } else {
                 tail = nil
+                head = nil
             }
             return t.data
         }
@@ -213,6 +209,56 @@ class LinkList<T: Equatable>: LinkedListFunction {
         }
         return false
     }
+    
+    // MARK: - node 操作
+    @discardableResult
+    public func contains(node: ListNode<T>) -> Bool {
+        var h = head
+        while h != nil {
+            if h === node {
+                return true
+            }
+            h = h?.next
+        }
+        return false
+    }
+    
+    @discardableResult
+    public func remove(node: ListNode<T>) -> Bool {
+        guard contains(node: node) else {
+            return false
+        }
+        if node === head {
+            return removeFirst() != nil
+        } else if node === tail {
+            return removeLast() != nil
+        }
+        node.prior?.next = node.next
+        node.next?.prior = node.prior
+        return true
+    }
+    
+    func appendNode(atHead node: ListNode<T>) {
+        if let headNode = head {
+            node.next = headNode
+            headNode.prior = node
+        } else {
+            tail = node
+        }
+        head = node
+    }
+    
+    func appendNode(atTail node: ListNode<T>) {
+        if let tailNode = tail {
+            tailNode.next = node
+            node.prior = tailNode
+        } else {
+            head = node
+        }
+        tail = node
+    }
+    
+    
     
     public func nodeAt(index: Int) -> ListNode<T>? {
         guard index >= 0 else {
