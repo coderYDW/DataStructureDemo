@@ -109,12 +109,11 @@ class LinkList<T: Equatable>: LinkedListFunction {
             if let headNext = h.next {
                 //长度大于1
                 head = headNext
-                //headNext.prior = nil
+                headNext.prior = nil
                 return h.data
             } else {
                 //如果链表长度为1, 头尾都为nil
-                head = nil
-                tail = nil
+                removeAll()
             }
         }
         //头结点没有直接返回nil
@@ -123,17 +122,18 @@ class LinkList<T: Equatable>: LinkedListFunction {
     
     @discardableResult
     func removeLast() -> T? {
-        //不为空
         if let t = tail {
             if let tailPre = t.prior {
+                //长度大于1
                 tail = tailPre
                 tail?.next = nil
             } else {
-                tail = nil
-                head = nil
+                //如果链表长度为1, 头尾都为nil
+                removeAll()
             }
             return t.data
         }
+        //尾结点没有直接返回nil
         return nil
     }
     
