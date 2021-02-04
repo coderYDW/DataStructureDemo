@@ -229,19 +229,4 @@ class LinkList<T: Equatable>: LinkedListFunction {
         return nil
     }
     
-    public func pop() -> T? {
-        if let last = tail {
-            if let lp = last.pre {
-                lp.next = nil
-                tail = lp
-            } else {
-                head = nil
-                tail = nil
-            }
-        }
-        tail?.pre = nil
-        tail?.next = nil
-        return tail?.value
-    }
-    
 }
