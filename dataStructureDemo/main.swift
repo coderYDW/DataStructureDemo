@@ -9,7 +9,16 @@ import Foundation
 
 let linkList = LinkList<Int>()
 for i in 1...5 {
-    linkList.append(value: i)
+    linkList.append(atTail: i)
 }
-print(linkList.lengh())
+
+//let result = linkList.insert(10, at: 2)
+
+let result = linkList.remove(at: 0)
+
+linkList.update(at: 3, 20)
+
+let a =  linkList.contains(1)
+
+print(result ?? 0, a, linkList.count)
 
