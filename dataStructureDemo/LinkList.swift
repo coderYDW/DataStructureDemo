@@ -8,11 +8,11 @@
 import Foundation
 
 class ListNode<T: Equatable> {
-    var value: T
+    var data: T
     var next: ListNode<T>? = nil
     weak var prior: ListNode<T>? = nil
     init(value: T) {
-        self.value = value
+        self.data = value
     }
 }
 
@@ -157,7 +157,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
         } else if let node = nodeAt(index: index) {
             node.prior?.next = node.next
             node.next?.prior = node.prior
-            return node.value
+            return node.data
         }
         return nil
     }
@@ -166,7 +166,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
     func removeFirst() -> T? {
         if let h = head {
             head = h.next
-            return h.value
+            return h.data
         }
         return nil
     }
@@ -180,7 +180,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
             } else {
                 tail = nil
             }
-            return t.value
+            return t.data
         }
         return nil
     }
@@ -193,20 +193,20 @@ class LinkList<T: Equatable>: LinkedListFunction {
     @discardableResult
     public func update(at index: Int, _ newElement: T) -> Bool {
         if let node = nodeAt(index: index) {
-            node.value = newElement
+            node.data = newElement
             return true
         }
         return false
     }
     
     public func value(of index: Int) -> T? {
-        return nodeAt(index: index)?.value
+        return nodeAt(index: index)?.data
     }
     
     public func contains(_ element: T) -> Bool {
         var h = head
         while h != nil {
-            if h?.value == element {
+            if h?.data == element {
                 return true
             }
             h = h?.next

@@ -8,10 +8,10 @@
 import Foundation
 
 class SingleListNode<T: Equatable> {
-    var value: T
+    var data: T
     var next: SingleListNode<T>? = nil
     init(value: T) {
-        self.value = value
+        self.data = value
     }
 }
 
@@ -88,7 +88,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
         if let node = nodeAt(index: index - 1) {
             if let next = node.next {
                 node.next = next.next
-                return next.value
+                return next.data
             }
         }
         return nil
@@ -97,7 +97,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
     func removeFirst() -> T? {
         if let node = head {
             head = node.next
-            return node.value
+            return node.data
         }
         return nil
     }
@@ -111,7 +111,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
             if node?.next?.next != nil {
                 node = node?.next
             } else {
-                let nextValue = node?.next?.value
+                let nextValue = node?.next?.data
                 node?.next = nil
                 return nextValue
             }
@@ -125,7 +125,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
     
     func update(at index: Int, _ newElement: T) -> Bool {
         if let node = nodeAt(index: index) {
-            node.value = newElement
+            node.data = newElement
             return true
         }
         return false
@@ -133,7 +133,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
     
     func value(of index: Int) -> T? {
         if let node = nodeAt(index: index) {
-            return node.value
+            return node.data
         }
         return nil
     }
@@ -141,7 +141,7 @@ class SingleLinkList<T: Equatable>: LinkedListFunction {
     func contains(_ element: T) -> Bool {
         var node = head
         while node != nil {
-            if node?.value == element {
+            if node?.data == element {
                 return true
             }
             node = node?.next

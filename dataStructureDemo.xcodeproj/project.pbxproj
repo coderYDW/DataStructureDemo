@@ -10,6 +10,7 @@
 		18D3721F25C935DE00871200 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3721E25C935DE00871200 /* main.swift */; };
 		18D3722725C93A8A00871200 /* LinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3722625C93A8A00871200 /* LinkList.swift */; };
 		18E25E0F25CBA4B900657B66 /* SingleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E25E0E25CBA4B900657B66 /* SingleLinkList.swift */; };
+		18E25E1225CBC9A100657B66 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E25E1125CBC9A100657B66 /* LRUCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		18D3721E25C935DE00871200 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		18D3722625C93A8A00871200 /* LinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkList.swift; sourceTree = "<group>"; };
 		18E25E0E25CBA4B900657B66 /* SingleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLinkList.swift; sourceTree = "<group>"; };
+		18E25E1125CBC9A100657B66 /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				18D3721E25C935DE00871200 /* main.swift */,
 				18D3722625C93A8A00871200 /* LinkList.swift */,
 				18E25E0E25CBA4B900657B66 /* SingleLinkList.swift */,
+				18E25E1125CBC9A100657B66 /* LRUCache.swift */,
 			);
 			path = dataStructureDemo;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E25E1225CBC9A100657B66 /* LRUCache.swift in Sources */,
 				18E25E0F25CBA4B900657B66 /* SingleLinkList.swift in Sources */,
 				18D3721F25C935DE00871200 /* main.swift in Sources */,
 				18D3722725C93A8A00871200 /* LinkList.swift in Sources */,
