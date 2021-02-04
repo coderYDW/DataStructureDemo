@@ -7,18 +7,19 @@
 
 import Foundation
 
-let linkList = LinkList<Int>()
+let linkList = SingleLinkList<Int>()
 for i in 1...5 {
     linkList.append(atTail: i)
 }
+let result = linkList.insert(10, at: 3)
 
 //let result = linkList.insert(10, at: 2)
 
-let result = linkList.remove(at: 0)
+let result1 = linkList.remove(at: 9)
 
-linkList.update(at: 3, 20)
+linkList.update(at: 2, 20)
 
 let a =  linkList.contains(1)
 
-print(result ?? 0, a, linkList.count)
+print(result, linkList.count)
 
