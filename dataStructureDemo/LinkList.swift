@@ -10,7 +10,7 @@ import Foundation
 class ListNode<T: Equatable> {
     var value: T
     var next: ListNode<T>? = nil
-    weak var pre: ListNode<T>? = nil
+    weak var prior: ListNode<T>? = nil
     init(value: T) {
         self.value = value
     }
@@ -106,7 +106,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
         let node = ListNode<T>(value: newElement)
         if let headNode = head {
             node.next = headNode
-            headNode.pre = node
+            headNode.prior = node
         }
         head = node
     }
@@ -115,7 +115,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
         let node = ListNode<T>(value: newElement)
         if let tailNode = tail {
             tailNode.next = node
-            node.pre = tailNode
+            node.prior = tailNode
         } else {
             head = node
         }
@@ -139,10 +139,10 @@ class LinkList<T: Equatable>: LinkedListFunction {
     
     func insert(_ value: T, beforeNode node: ListNode<T>) {
         let newNode = ListNode<T>(value: value)
-        newNode.pre = node.pre
-        node.pre?.next = newNode
+        newNode.prior = node.prior
+        node.prior?.next = newNode
         newNode.next = node
-        node.pre = newNode
+        node.prior = newNode
     }
     
     @discardableResult
@@ -155,8 +155,8 @@ class LinkList<T: Equatable>: LinkedListFunction {
         } else if index == count - 1 {
             return removeLast()
         } else if let node = nodeAt(index: index) {
-            node.pre?.next = node.next
-            node.next?.pre = node.pre
+            node.prior?.next = node.next
+            node.next?.prior = node.prior
             return node.value
         }
         return nil
@@ -174,7 +174,7 @@ class LinkList<T: Equatable>: LinkedListFunction {
     @discardableResult
     func removeLast() -> T? {
         if let t = tail {
-            if let tailPre = t.pre {
+            if let tailPre = t.prior {
                 tail = tailPre
                 tail?.next = nil
             } else {
