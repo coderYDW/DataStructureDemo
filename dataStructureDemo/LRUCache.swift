@@ -69,9 +69,9 @@ class LRUCache {
             return
         }
         //如果关键字不存在，则插入该组「关键字-值」。
-        let p = Pair(key: key, val: value)
-        cache[key] = ListNode<Pair>(value: p)
-        linkList.append(atHead: p)
+        let node = ListNode<Pair>(value: Pair(key: key, val: value))
+        cache[key] = node
+        linkList.appendNode(atHead: node)
         //当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
         if linkList.count > capacity {
             if let key = linkList.last?.data.key {
