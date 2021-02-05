@@ -181,9 +181,6 @@ class LinkList<T: Equatable>: LinkedListFunction {
     
     @discardableResult
     public func remove(node: ListNode<T>) -> Bool {
-        guard contains(node: node) else {
-            return false
-        }
         if node === head {
             return removeFirst() != nil
         } else if node === tail {

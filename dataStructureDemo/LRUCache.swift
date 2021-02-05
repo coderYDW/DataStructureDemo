@@ -62,9 +62,12 @@ class LRUCache {
     func put(_ key: Int, _ value: Int) {
         //如果关键字已经存在，则变更其数据值；
         if let node = cache[key] {
+            if node === linkList.first {
+                node.data.val = value
+                return
+            }
             // 移动到首位
             linkList.remove(node: node)
-            node.data.val = value
             linkList.appendNode(atHead: node)
             return
         }
@@ -73,7 +76,7 @@ class LRUCache {
         cache[key] = node
         linkList.appendNode(atHead: node)
         //当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
-        if linkList.count > capacity {
+        if cache.count > capacity {
             if let key = linkList.last?.data.key {
                 cache[key] = nil
             }
